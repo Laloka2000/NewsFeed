@@ -31,10 +31,32 @@
 export default {
   name: 'App',
 
-  Data: {
-    return(){
+  Data() {
+    return {
+      options: {
+        api_url: 'https://news-api14.p.rapidapi.com/top-headlines?country=us&language=en&pageSize=10&category=sports',
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '24021b6bc7msh30b42bd30cd93e3p172198jsndf268abf525c',
+          'X-RapidAPI-Host': 'news-api14.p.rapidapi.com'
+        },
+
+      }
     }
-  }
+  },
+  /*
+  method: {
+
+    fetchApi(){
+      try {
+	      const response = await fetch(url, options);
+	      const result = await response.text();
+	      console.log(result);
+      } catch (error) {
+	      console.error(error);
+      }
+    }
+  }*/
 }
 
 </script>
