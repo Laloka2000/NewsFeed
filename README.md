@@ -1,4 +1,4 @@
-# ecommercestore
+# newsfeed
 
 ## Project setup
 ```
