@@ -1,21 +1,39 @@
 <template>
   <div id="app">
-    <main>
-      <NavbarMenu/>
-    </main>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row content">
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+      </div>
+  </div>
   </div>
 </template>
 
 
 <script>
 
-import NavbarMenu from './components/NavbarMenu.vue'
 
 export default {
-
   name: 'App',
-  components: {
-    NavbarMenu
+
+  Data: {
+    return(){
+    }
   }
 }
 
@@ -39,7 +57,5 @@ export default {
   margin: 0;
   padding: 0;
 }
-
-@import'~bootstrap/dist/css/bootstrap.css'
 
 </style>
