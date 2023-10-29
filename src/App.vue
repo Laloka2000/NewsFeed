@@ -9,17 +9,10 @@
       </div>
     </nav>
     <div class="container">
-      <div class="row content">
-        <div class="col">
-          Column
-        </div>
-        <div class="col">
-          Column
-        </div>
-        <div class="col">
-          Column
-        </div>
-      </div>
+      <div>
+        <button @click="fetchData">Fetch Data</button>
+        <div v-if="apiResponse">{{ apiResponse }}</div>
+    </div>
   </div>
   </div>
 </template>
@@ -27,9 +20,30 @@
 
 <script>
 
+import axios from 'axios';
+
+
 
 export default {
   name: 'App',
+
+  data() {
+    return {
+      apiResponse: null
+    }
+  },
+
+  methods: {
+  fetchData() {
+    axios.get('https://newslit-news-search.p.rapidapi.com/news')
+      .then(response => {
+        this.apiResponse = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+}
 
 }
 
