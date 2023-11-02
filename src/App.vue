@@ -30,7 +30,14 @@
         <div class="tech">
           <h2>Technológia</h2>
         </div>
-        
+        <h1>Api</h1>
+        <button @click="fetchNews">Fetch News</button>
+        <ul>
+          <li v-for="article in articles" :key="article.key">
+            {{ article.title }}
+          </li>
+        </ul>
+        <Carousel3d/>
     </div>
   </div>
   </div>
@@ -39,35 +46,40 @@
 
 <script>
 
-import axios from 'axios';
-
-
+import Carousel3d from './components/Carousel3d.vue';
 
 export default {
   name: 'App',
 
+  components: {
+    Carousel3d
+  },
+
   data() {
     return {
-      apiResponse: null
+      articles: []
     }
   },
 
   methods: {
-  fetchData() {
-    axios.get('https://newslit-news-search.p.rapidapi.com/news')
-      .then(response => {
-        this.apiResponse = response.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
+    fetchNews(){
+      var url = 'https://newsapi.org/v2/everything?' +
+                'q=Apple&' +
+                'from=2023-11-02&' +
+                'sortBy=popularity&' +
+                'apiKey=d6287ad7bf594dfdaeac226f7328c34a';
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.articles = data.articles;
+        })
+        .catch(error => {
+          console.log('Error fetching data', error);
+        }); 
+    }
+  }
 
-  
 }
-
-}
-
 </script>
 
 
